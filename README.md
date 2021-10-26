@@ -23,3 +23,5 @@
 ## 7.ZooKeeper
 
 ## 8.Demo（java测试用例）
+
+## 9.Redis
