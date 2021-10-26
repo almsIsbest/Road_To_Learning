@@ -87,7 +87,7 @@ Docker是一个Client-Server结构的系统，Docker的守护进程运行在主�
 
 DockerServer接收到Docker-Client的指令
 
-![image-20211025113148003](C:\Users\Betta\AppData\Roaming\Typora\typora-user-images\image-20211025113148003.png)
+![](C:\Users\Betta\Desktop\image-20211025113148003.png)
 
 ### Docker为什么比VM快？
 
@@ -95,7 +95,7 @@ DockerServer接收到Docker-Client的指令
 
 2、Docker利用的是宿主机的内核，vm需要是Guest
 
-![image-20211025113646994](C:\Users\Betta\AppData\Roaming\Typora\typora-user-images\image-20211025113646994.png)
+![](C:\Users\Betta\Desktop\image-20211025113646994.png)
 
 # Docker的常用命令
 
@@ -142,6 +142,7 @@ tutum/mysql                       Base docker image to run a MySQL database se�
 linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   33                   
 schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   31                   [OK]
 mysql/mysql-router                MySQL Router provides transparent routing be…   23                   
+
 
 ```
 
