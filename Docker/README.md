@@ -87,7 +87,7 @@ Docker是一个Client-Server结构的系统，Docker的守护进程运行在主�
 
 DockerServer接收到Docker-Client的指令
 
-![](C:\Users\Betta\Desktop\image-20211025113148003.png)
+![](../images/image-20211025113148003.png)
 
 ### Docker为什么比VM快？
 
@@ -95,7 +95,7 @@ DockerServer接收到Docker-Client的指令
 
 2、Docker利用的是宿主机的内核，vm需要是Guest
 
-![](C:\Users\Betta\Desktop\image-20211025113646994.png)
+![](../images/image-20211025113646994.png)
 
 # Docker的常用命令
 
