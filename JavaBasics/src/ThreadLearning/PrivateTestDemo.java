@@ -9,6 +9,7 @@ package ThreadLearning;
 public class PrivateTestDemo extends PrivateDemo{
     public static void main(String[] args) {
         PrivateTestDemo p=new PrivateTestDemo();
+
         System.out.println(p.start());
     }
 }
