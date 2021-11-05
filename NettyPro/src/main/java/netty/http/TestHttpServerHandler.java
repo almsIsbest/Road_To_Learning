@@ -27,12 +27,16 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
         //判断msg是不是httprequest请求
         if (msg instanceof HttpRequest){
 
-            //
+            System.out.println("pipeline hashcode "+ctx.pipeline().hashCode()+"TestHttpServerHandler hash="+this.hashCode());
+            //获取到httpRequest
             HttpRequest httpRequest=(HttpRequest) msg;
             //获取uri
-            URI uri =new URI(httpRequest.uri());
+            URI uri = new URI(httpRequest.uri());
 
-  
+            if("/favicon.ico".equals(uri.getPath())){
+                System.out.println("请求了 favicon.ico,不做响应");
+                return;
+            }
 
             System.out.println("msg 类型="+msg.getClass());
             System.out.println("客户端地址" +ctx.channel().remoteAddress());
