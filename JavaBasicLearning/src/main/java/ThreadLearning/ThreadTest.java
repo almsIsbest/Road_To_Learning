@@ -20,7 +20,7 @@ class MyThread extends Thread {
     @Override
     /**
      * @Author alms
-     * @Description //TODO 
+     * @Description //TODO
      * @Date 17:59 2021/10/27
      * @Param []
      * @return void
