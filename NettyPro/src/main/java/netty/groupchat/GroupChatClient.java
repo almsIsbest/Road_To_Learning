@@ -65,6 +65,6 @@ public class GroupChatClient {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        new GroupChatClient("127.0.0.1",7777).run();
+        new GroupChatClient("127.0.0.1",7000).run();
     }
 }

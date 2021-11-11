@@ -43,7 +43,7 @@ public class GroupChatServer {
                     });
             System.out.println("服务器启动");
             ChannelFuture future = bootstrap.bind(port).sync();
-            future.channel().closeFuture();
+            future.channel().closeFuture().sync();
         }finally {
             bossgroup.shutdownGracefully();
             workgroup.shutdownGracefully();
@@ -52,7 +52,7 @@ public class GroupChatServer {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        new GroupChatServer(9999).run();
+        new GroupChatServer(7000).run();
     }
 
 }

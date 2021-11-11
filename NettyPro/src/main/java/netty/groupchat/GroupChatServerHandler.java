@@ -27,6 +27,7 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         Channel channel=ctx.channel();
+        System.out.println("先执行建立");
         channelGroup.writeAndFlush("客户端进入聊天"+channel.remoteAddress()+"\n");
         channelGroup.add(channel);
     }
@@ -45,6 +46,7 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
 
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("handlerRemoved");
         channelGroup.writeAndFlush("客户单"+ctx.channel().remoteAddress()+"离开了\n");
     }
 
