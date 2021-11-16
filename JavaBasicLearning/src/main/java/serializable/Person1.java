@@ -3,63 +3,55 @@ package serializable;
 import java.io.*;
 
 /**
- * @ClassName Person
+ * @ClassName Person1
  * @Description TODO
- * @Author Person
- * @Data 2021/11/11 11:17
+ * @Author Person1
+ * @Data 2021/11/11 20:35
  **/
-public class Person implements Serializable {
-    private static final long seriaVersionUID=1L; //
+public class Person1 extends People implements Serializable {
+
+    private static final long serialVersionUID=1l;
 
     String name;
     int age;
 
-    public Person(String name,int age){
+    public Person1(int num ,String name,int age){
+        super(num);
         this.name=name;
         this.age=age;
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+    public String toString(){
+        return super.toString()+"\tname:"+name+"\tage:"+age;
     }
 
-    public static void main(String[] args) {
-        File file=new File("out.txt");
+    public static void main(String[] args) throws IOException {
 
-        FileOutputStream fos=null;
+        File file=new File("out1.txt");
+
+        FileOutputStream outputStream=null;
         try{
-            fos=new FileOutputStream(file);
-            ObjectOutputStream oos=null;
-            try{
-                oos=new ObjectOutputStream(fos);
-                Person person = new Person("tom", 22);
+            outputStream=new FileOutputStream(file);
+            ObjectOutputStream oos=new ObjectOutputStream(outputStream);
+            try {
+                Person1 person = new Person1(10, "tom", 22); //调用带参数的构造函数num=10,name = "tim",age =22
                 System.out.println(person);
-                oos.writeObject(person);			//写入对象
+                oos.writeObject(person);                  //写出对象
                 oos.flush();
-            } catch (IOException e) {
+            }catch (Exception e){
                 e.printStackTrace();
             }finally {
                 try {
                     oos.close();
-                } catch (IOException e) {
-                    System.out.println("oos关闭失败");
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
             }
-
         } catch (FileNotFoundException e) {
-            System.out.println("找不到文件："+e.getMessage());
-        }finally {
-            try {
-                fos.close();
-            } catch (IOException e) {
-                System.out.println("fos关闭失败"+e.getMessage());
-            }
+            e.printStackTrace();
+        } finally {
+                outputStream.close();
         }
-
 
 
         FileInputStream fis = null;
@@ -69,8 +61,8 @@ public class Person implements Serializable {
             try {
                 ois = new ObjectInputStream(fis);
                 try {
-                    Person person = (Person)ois.readObject();	//读出对象
-                    System.out.println(person);
+                    Person1 person1 = (Person1)ois.readObject();	//读出对象
+                    System.out.println(person1);
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
