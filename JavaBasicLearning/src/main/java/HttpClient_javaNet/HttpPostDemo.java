@@ -5,6 +5,7 @@ import org.apache.http.HttpHost;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.*;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -19,12 +20,14 @@ import java.time.Duration;
  * @Data 2021/11/18 11:30
  **/
 public class HttpPostDemo {
-    public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException {
+
+    public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException, IllegalAccessException {
         HttpClient client=HttpClient.newHttpClient();
         HttpRequest request=HttpRequest.newBuilder().GET().uri(new URI("https://javaherobrine.github.io"))
                 .build();
 
         HttpResponse<byte[]> response=client.send(request, HttpResponse.BodyHandlers.ofByteArray());
         System.out.println(response.headers().map());
+
     }
 }
