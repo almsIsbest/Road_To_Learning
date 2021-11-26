@@ -10,6 +10,7 @@ import java.net.*;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.time.Duration;
 
@@ -23,11 +24,11 @@ public class HttpPostDemo {
 
     public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException, IllegalAccessException {
         HttpClient client=HttpClient.newHttpClient();
-        HttpRequest request=HttpRequest.newBuilder().GET().uri(new URI("https://javaherobrine.github.io"))
+        HttpRequest request=HttpRequest.newBuilder().GET().uri(new URI("http://life.httpcn.com/"))
                 .build();
 
-        HttpResponse<byte[]> response=client.send(request, HttpResponse.BodyHandlers.ofByteArray());
-        System.out.println(response.headers().map());
+        HttpResponse<String> response=client.send(request, HttpResponse.BodyHandlers.ofString(Charset.forName("GBK")));
+        System.out.println(response.body());
 
     }
 }

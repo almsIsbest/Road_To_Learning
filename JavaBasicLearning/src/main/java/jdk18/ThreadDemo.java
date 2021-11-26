@@ -10,17 +10,18 @@ import java.util.concurrent.atomic.AtomicInteger;
  **/
 public class ThreadDemo {
     public static void main(String[] args) {
-        AtomicInteger atomicInteger=new AtomicInteger(1);
-        while(true){
-            Thread.startVirtualThread(() -> {
-                try {
-                    Thread.sleep(1);
-                    System.out.println("Hello, Loom!"+atomicInteger.incrementAndGet());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-            });
-        }
+//        AtomicInteger atomicInteger=new AtomicInteger(1);
+//        while(true){
+//            Thread.startVirtualThread(() -> {
+//                try {
+//                    Thread.sleep(1);
+//                    System.out.println("Hello, Loom!"+atomicInteger.incrementAndGet());
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            });
+//        }
     }
+
 }

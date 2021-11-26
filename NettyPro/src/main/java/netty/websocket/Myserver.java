@@ -57,7 +57,7 @@ public class Myserver {
                      * @Param [ch]
                      * @return void
                      **/
-                    pipeline.addLast(new HttpObjectAggregator(8192));
+                    pipeline.addLast(new HttpObjectAggregator(8049));
 
                     /*
                      * @Author alms

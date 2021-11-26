@@ -7,6 +7,8 @@ import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -64,7 +66,7 @@ public class HttpMain {
                                 "=17&minute=10&pid=&cid=&sex=1&act=submit#main"))
                 .GET().build();
         //(HttpRequest.BodyPublishers.ofString("gsname1=北京,gsname2=四书五鲸科技,gsname3=有限公司"));
-        httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString()).thenApply(HttpResponse::body)
+        httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString(Charset.forName("GBK"))).thenApply(HttpResponse::body)
                 .whenComplete((s, e) -> {
                     if (e != null) {
                         e.printStackTrace();
