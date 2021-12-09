@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.alms.dao.UserMapper">
+    <resultMap id="userMapper" type="user">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="pwd"/>
+    </resultMap>
+
+    <select id="getUserById" resultMap="userMapper" parameterType="int">
+        select *  from mybatis.user where id=#{id}
+    </select>
+
+
+
+</mapper>
