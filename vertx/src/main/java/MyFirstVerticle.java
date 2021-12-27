@@ -1,4 +1,7 @@
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.http.HttpServer;
+import io.vertx.core.http.HttpServerResponse;
+import io.vertx.ext.web.Router;
 
 /**
  * @ClassName MyFirstVerticle
@@ -10,9 +13,18 @@ public class MyFirstVerticle extends AbstractVerticle {
 
     @Override
     public void start() throws Exception {
-        vertx.createHttpServer().requestHandler(req->{
-            req.response().putHeader("content-type", "text/plain")
-                    .end("Hello World!");
-        }).listen(8080);
+
+        HttpServer httpServer = vertx.createHttpServer();
+        Router router = Router.router(vertx);
+
+        router.route("/index").handler(ctx->{
+            HttpServerResponse response = ctx.response();
+            response.putHeader("content-type","text/plain");
+
+            response.end("hell world ");
+        });
+
+        httpServer.requestHandler(router).listen(8080);
+
     }
 }
