@@ -1,6 +1,7 @@
 package HttpClient_javaNet;
 
 
+import javax.sound.midi.Soundbank;
 import java.io.*;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -9,6 +10,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -19,7 +22,7 @@ public class HttpMain {
     public static void main(String[] args) throws InterruptedException, IOException {
         FileInputStream fileInputStream = new FileInputStream(new File("text.txt"));
         final String keji = "笑";
-        final String keji1="珠宝交流";
+        final String keji1 = "珠宝设计教育咨询";
         ExecutorService service = Executors.newFixedThreadPool(20);
 
         BufferedReader br = new BufferedReader(new FileReader(new File("text.txt")));
@@ -34,8 +37,15 @@ public class HttpMain {
         String str = sb.toString();
         //  str = str.replace("\n", "");
         //System.out.println(str);
+        System.out.println(str.length());
+        long start=System.currentTimeMillis();
+        System.out.println(start/1000);
+        Date date = new Date();
+        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+        System.out.println(dateFormat.format(date));
         for (int i = 0; i < str.length(); i++) {
-            String finalString =keji+str.charAt(i)+keji1;
+
+            String finalString = keji + str.charAt(i) + keji1;
 //            service.submit(() -> {
 //                try {
             //System.out.println(finalString);
@@ -47,7 +57,9 @@ public class HttpMain {
             Thread.sleep(1000);
 
         }
-
+        long end=System.currentTimeMillis();
+        System.out.println(dateFormat.format(date));
+        System.out.println("总用时"+(end-start)/1000);
         Thread.sleep(Integer.MAX_VALUE);
     }
 
@@ -82,7 +94,7 @@ public class HttpMain {
                                     "style=\"font-size:18px;\"") + 27);
                         }
                         int num = Integer.parseInt(point);
-                      //  System.out.println(num);
+                        //  System.out.println(num);
                         if (num >= 90) {
                             System.out.print("point : " + num);
                             System.out.println("  name : " + str);
