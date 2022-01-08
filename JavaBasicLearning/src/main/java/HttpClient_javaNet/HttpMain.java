@@ -18,8 +18,8 @@ public class HttpMain {
 
     public static void main(String[] args) throws InterruptedException, IOException {
         FileInputStream fileInputStream = new FileInputStream(new File("text.txt"));
-        final String keji = "鲸";
-        final String keji1="科技";
+        final String keji = "笑";
+        final String keji1="珠宝交流";
         ExecutorService service = Executors.newFixedThreadPool(20);
 
         BufferedReader br = new BufferedReader(new FileReader(new File("text.txt")));
