@@ -21,8 +21,8 @@ public class HttpMain {
 
     public static void main(String[] args) throws InterruptedException, IOException {
         FileInputStream fileInputStream = new FileInputStream(new File("text.txt"));
-        final String keji = "笑";
-        final String keji1 = "珠宝设计教育咨询";
+        final String keji = "珉";
+        final String keji1 = "珠宝设计";
         ExecutorService service = Executors.newFixedThreadPool(20);
 
         BufferedReader br = new BufferedReader(new FileReader(new File("text.txt")));
@@ -37,15 +37,15 @@ public class HttpMain {
         String str = sb.toString();
         //  str = str.replace("\n", "");
         //System.out.println(str);
-        System.out.println(str.length());
-        long start=System.currentTimeMillis();
-        System.out.println(start/1000);
-        Date date = new Date();
-        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
-        System.out.println(dateFormat.format(date));
+//        System.out.println(str.length());
+//        long start=System.currentTimeMillis();
+//        System.out.println(start/1000);
+//        Date date = new Date();
+//        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+//        System.out.println(dateFormat.format(date));
         for (int i = 0; i < str.length(); i++) {
 
-            String finalString = keji + str.charAt(i) + keji1;
+            String finalString = keji + str.charAt(i) ;
 //            service.submit(() -> {
 //                try {
             //System.out.println(finalString);
@@ -57,9 +57,9 @@ public class HttpMain {
             Thread.sleep(1000);
 
         }
-        long end=System.currentTimeMillis();
-        System.out.println(dateFormat.format(date));
-        System.out.println("总用时"+(end-start)/1000);
+//        long end=System.currentTimeMillis();
+//        System.out.println(dateFormat.format(date));
+//        System.out.println("总用时"+(end-start)/1000);
         Thread.sleep(Integer.MAX_VALUE);
     }
 
@@ -69,7 +69,7 @@ public class HttpMain {
         }
         String urlEncoder1 = URLEncoder.encode("北京", "gb2312");
         String urlEncoder2 = URLEncoder.encode(str, "gb2312");
-        String urlEncoder3 = URLEncoder.encode("有限公司", "gb2312");
+        String urlEncoder3 = URLEncoder.encode("珠宝设计教育咨询有限公司", "gb2312");
         HttpClient httpClient = HttpClient.newBuilder().executor(Executors.newCachedThreadPool()).build();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(
