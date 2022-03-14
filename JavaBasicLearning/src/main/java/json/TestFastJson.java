@@ -3,6 +3,7 @@ package json;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,8 @@ public class TestFastJson {
         String json2 = tfj.getJsonArrayValue(array2, 0);
         System.out.println("json2="+json2);
         //json2={"sex":"男","name":"乔佳飞","age":30}
-
+        prj= JSONObject.parseObject(json,new TypeReference<>(){});
+        System.out.println(prj);
         /*以下输出
         name=乔佳飞
         sex=男

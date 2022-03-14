@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<root>
+    <pool name="game">
+        <property name="name" value="game"/>
+        <property name="url" value="jdbc:mysql://192.168.181.133:3306/alms?useSSL=false&amp;serverTimezone=GMT&amp;allowPublicKeyRetrieval=true&amp;autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;rewriteBatchedStatements=true&amp;useLocalSessionState=true"/>
+        <property name="username" value="test"/>
+        <property name="password" value="123456"/>
+        <property name="initialSize" value="1"/><!--初始连接数-->
+        <property name="minIdle" value="16"/><!--最小连接数-->
+        <property name="maxActive" value="100"/><!--最大连接数-->
+        <property name="maxWait" value="60000"/><!--获取连接的的等待时间-->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/><!--配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒-->
+        <property name="minEvictableIdleTimeMillis" value="180000"/><!--配置一个连接在池中最小生存的时间，单位是毫秒-->
+        <property name="validationQuery" value="SELECT 'x'"/><!--连接验证sql-->
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="poolPreparedStatements" value="true"/><!--打开PSCache-->
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="100"/><!--指定每个连接上PSCache的大小-->
+        <property name="filters" value="stat"/>
+    </pool>
+    <pool name="log">
+        <property name="name" value="log"/>
+        <property name="url" value="jdbc:mysql://172.21.0.15:3306/log?useSSL=false&amp;serverTimezone=GMT&amp;allowPublicKeyRetrieval=true&amp;autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;rewriteBatchedStatements=true&amp;useLocalSessionState=true"/>
+        <property name="username" value="dbtest"/>
+        <property name="password" value="dbtest123"/>
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="5"/>
+        <property name="maxWait" value="60000"/>
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+        <property name="validationQuery" value="SELECT 'shotTurn'"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="100"/>
+        <property name="filters" value="stat"/>
+    </pool>
+</root>
