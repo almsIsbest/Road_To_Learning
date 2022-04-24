@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,48 +25,80 @@ import java.util.List;
 public class DBTest {
     private static DruidDataSource ddsGame = null;// 游戏库连接池
 
-    private static  String select="select * from user where id =13  ";
+    private static String select = "select * from tennis_user_role  ";
+
+    private static String updateRole = "UPDATE tennis_user_role SET total_play_count =LEAST((SELECT VALUE FROM  tennis_user_record WHERE user_id= ? AND TYPE=5),?) , total_win_count = LEAST((SELECT VALUE FROM  tennis_user_record WHERE user_id= ? AND TYPE=6),? ) WHERE user_id = ? AND role_id = ? ";
 
     public static int id;
     public static String email;
     public static String name;
 
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws Exception {
         DbPool();
-        if(ddsGame.getConnection()!=null){
+        CsvReaderInit.init();
+        var userRoles = CsvReaderInit.getUserRoles();
+        Collections.sort(userRoles);
+
+        System.out.println("userRoleSize = " + userRoles.size());
+
+        if (ddsGame.getConnection() != null) {
             System.out.println("data base connection success");
         }
-        try ( Connection conn= ddsGame.getConnection()){
-            PreparedStatement ps = conn.prepareStatement(select);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                id = rs.getInt(1);
-                email = rs.getString(2);
-                name = rs.getString(3);
-                System.out.println("id "+id+"email "+ email +"name "+ name);
+
+        try (Connection conn = ddsGame.getConnection()) {
+            int index = 0 ;
+            while (index<userRoles.size()) {
+                UserRole userRole = userRoles.get(index);
+                if (userRole == null) {
+                    break;
+                }
+                System.out.println(userRole);
+                PreparedStatement ps = conn.prepareStatement(updateRole);
+                ps.setInt(1, userRole.getUserId());
+                ps.setInt(2, userRole.getAll_game());
+                ps.setInt(3, userRole.getUserId());
+                ps.setInt(4, userRole.getSuccess());
+                ps.setInt(5, userRole.getUserId());
+                ps.setInt(6, userRole.getRoleId());
+                int rs= ps.executeUpdate();
+                if(rs>0){
+                    System.out.println("success user_id  "+ userRole.getUserId()+ " role_id"+ userRole.getRoleId());
+                }else {
+                    System.out.println("failed user_id   "+ userRole.getUserId()+" role_id"+ userRole.getRoleId());
+                }
+                ps.close();
+                index++;
             }
-            rs.close();
-            ps.close();
+//            while (rs.next()){
+//                UserRole ur= new UserRole();
+//                ur.setUserId(rs.getInt("user_id"));
+//                ur.setRoleId(rs.getInt("role_id"));
+//                ur.setAll_game(rs.getInt("total_play_count"));
+//                ur.setSuccess(rs.getInt("total_win_count"));
+//                System.out.println(ur.toString());
+//            }
 
-            System.out.println("id "+id+"email "+ email +"name "+ name);
 
-        }catch (Exception e){
+            //System.out.println("id " + id + "email " + email + "name " + name);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
-    public static void DbPool(){
-        SAXBuilder saxBuilder=new SAXBuilder();
+    public static void DbPool() {
+        SAXBuilder saxBuilder = new SAXBuilder();
         try {
             Document doc = saxBuilder.build(new File("configs/dbpool.xml"));
-            Element root=doc.getRootElement();
-            List<Element> poollist=root.getChildren("pool");
-            for(var poolElement:poollist){
-                String name=poolElement.getAttributeValue("name");
-                if(name.equals("game")){
-                ddsGame=(DruidDataSource) DruidDataSourceFactory.createDataSource(getPropertiesMap(poolElement));
-                ddsGame.setName("game");
+            Element root = doc.getRootElement();
+            List<Element> poollist = root.getChildren("pool");
+            for (var poolElement : poollist) {
+                String name = poolElement.getAttributeValue("name");
+                if (name.equals("game")) {
+                    ddsGame = (DruidDataSource) DruidDataSourceFactory.createDataSource(getPropertiesMap(poolElement));
+                    ddsGame.setName("game");
                 }
             }
 

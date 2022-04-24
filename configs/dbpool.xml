@@ -3,9 +3,9 @@
 <root>
     <pool name="game">
         <property name="name" value="game"/>
-        <property name="url" value="jdbc:mysql://192.168.181.133:3306/alms?useSSL=false&amp;serverTimezone=GMT&amp;allowPublicKeyRetrieval=true&amp;autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;rewriteBatchedStatements=true&amp;useLocalSessionState=true"/>
-        <property name="username" value="test"/>
-        <property name="password" value="123456"/>
+        <property name="url" value="jdbc:mysql://cdb-qm4lo87r.usw.cdb.myqcloud.com:5267/tennis?useSSL=false&amp;serverTimezone=GMT&amp;allowPublicKeyRetrieval=true&amp;autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;rewriteBatchedStatements=true&amp;useLocalSessionState=true"/>
+        <property name="username" value="game"/>
+        <property name="password" value="tennis_game_03)q15"/>
         <property name="initialSize" value="1"/><!--初始连接数-->
         <property name="minIdle" value="16"/><!--最小连接数-->
         <property name="maxActive" value="100"/><!--最大连接数-->
