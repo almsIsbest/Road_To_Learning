@@ -81,4 +81,10 @@ public class Test02 {
 
         System.out.println(bytes[0]);
     }
+
+    @Test
+    public void Test5(){
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(1,1);
+    }
 }

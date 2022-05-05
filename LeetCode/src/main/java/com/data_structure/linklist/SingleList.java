@@ -1,5 +1,7 @@
 package com.data_structure.linklist;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @ClassName SingleList
  * @Description µ¥ÏîÁ´±í
