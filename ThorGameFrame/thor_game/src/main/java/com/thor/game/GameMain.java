@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @ClassName GameMain
- * @Description gameÆô¶¯
+ * @Description gameæ¸¸æˆå¯åŠ¨æœ
  * @Author alms
  * @Data 2022/4/29 12:17
  **/
@@ -17,22 +17,22 @@ public class GameMain {
             return;
         }
 
-        System.out.println("·şÎñÆ÷Æô¶¯£¡ ");
+        System.out.println("æœåŠ¡å™¨å¯åŠ¨æˆåŠŸ");
 
         Runtime.getRuntime().addShutdownHook(new ShutdownHook());
     }
     private static boolean init(){
-        /**³õÊ¼»¯È«¾Ö±äÁ¿ Êı¾İ¿âÅäÖÃ Êı¾İ¿â¶ÔÏó³õÊ¼»¯**/
+        /**åˆå§‹åŒ–å…¨å±€å˜é‡**/
         return false;
     }
 
     private static boolean startServer(){
-        /**Æô¶¯·şÎñÆ÷**/
+        /**å¼€å¯gameæœ**/
         return false;
     }
 
     private static boolean startGame(){
-        /**TODO**/
+        /**å¼€å¯æ¸¸æˆ**/
         return false;
     }
 }

@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @ClassName ShutdownHook
- * @Description ·þÎñÆ÷¹Ø±Õhook
+ * @Description hookæŒ‚é’©
  * @Author alms
  * @Data 2022/4/29 14:46
  **/

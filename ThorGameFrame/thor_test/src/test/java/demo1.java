@@ -15,36 +15,36 @@ import java.util.Arrays;
 public class demo1 {
 
     private static final int writeInt = 345;
-    /**´óÐ¡¶Ë²âÊÔ**/
+    /**ï¿½ï¿½Ð¡ï¿½Ë²ï¿½ï¿½ï¿½**/
     @Test
     public void test1(){
         ByteBuf buf = Unpooled.buffer(4,4);
         buf.writeInt(345);
         byte[] arr = new byte[4];
         buf.readBytes(arr);
-        /**´ó¶Ë»¹ÊÇÐ¡¶Ë¶Á**/
+        /**ï¿½ï¿½Ë»ï¿½ï¿½ï¿½Ð¡ï¿½Ë¶ï¿½**/
         System.out.println(Arrays.toString(arr));
         byte a = (byte) 0x345;
         System.out.println(Integer.toHexString(-1));
-        System.out.println("int ×ª³É byte");
+        System.out.println("int ×ªï¿½ï¿½ byte");
         byte[] b =intToByte4(writeInt);
         for(int i = 0 ;i<b.length;i++){
             System.out.println(b[i]);
         }
-        System.out.println("long ×ª³É byte");
+        System.out.println("long ×ªï¿½ï¿½ byte");
         b=longToByte8(345);
         for(int i = 0 ;i<b.length;i++){
             System.out.println(b[i]);
         }
 
 
-        System.out.println("unsigned short ×ª³É byte");
+        System.out.println("unsigned short ×ªï¿½ï¿½ byte");
         b = unsignedShortToByte2(345);
         for(int i = 0 ;i<b.length;i++){
             System.out.println(b[i]);
         }
     }
-    /** intÕûÊý×ª»»³É4×Ö½ÚµÄbyteÊý×é**/
+    /** intï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½4ï¿½Ö½Úµï¿½byteï¿½ï¿½ï¿½ï¿½**/
     public static byte[] intToByte4(int i) {
         byte[] targets = new byte[4];
         targets[3] = (byte) (i & 0xFF);
@@ -54,7 +54,7 @@ public class demo1 {
         return targets;
     }
 
-    /**longÕûÊý×ª»»³É8×Ö½ÚµÄbyteÊý×é**/
+    /**longï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½8ï¿½Ö½Úµï¿½byteï¿½ï¿½ï¿½ï¿½**/
     public static byte[] longToByte8(long lo){
         byte[] target = new byte[8];
         for(int i=0;i<8 ;i++){
@@ -71,24 +71,24 @@ public class demo1 {
         return target;
     }
     /**
-     * byteÊý×é×ª»»ÎªÎÞ·ûºÅshortÕûÊý
+     * byteï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½Þ·ï¿½ï¿½ï¿½shortï¿½ï¿½ï¿½ï¿½
      *
      * @param bytes
-     *            byteÊý×é
-     * @return shortÕûÊý
+     *            byteï¿½ï¿½ï¿½ï¿½
+     * @return shortï¿½ï¿½ï¿½ï¿½
      */
     public static int byte2ToUnsignedShort(byte[] bytes){
         return byte2ToUnsignedShort(bytes, 0);
     }
 
     /**
-     * byteÊý×é×ª»»ÎªÎÞ·ûºÅshortÕûÊý
+     * byteï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½Þ·ï¿½ï¿½ï¿½shortï¿½ï¿½ï¿½ï¿½
      *
      * @param bytes
-     *            byteÊý×é
+     *            byteï¿½ï¿½ï¿½ï¿½
      * @param off
-     *            ¿ªÊ¼Î»ÖÃ
-     * @return shortÕûÊý
+     *            ï¿½ï¿½Ê¼Î»ï¿½ï¿½
+     * @return shortï¿½ï¿½ï¿½ï¿½
      */
     public static int byte2ToUnsignedShort(byte[] bytes, int off) {
         int high = bytes[off];
@@ -97,13 +97,13 @@ public class demo1 {
     }
 
     /**
-     * byteÊý×é×ª»»ÎªintÕûÊý
+     * byteï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªintï¿½ï¿½ï¿½ï¿½
      *
      * @param bytes
-     *            byteÊý×é
+     *            byteï¿½ï¿½ï¿½ï¿½
      * @param off
-     *            ¿ªÊ¼Î»ÖÃ
-     * @return intÕûÊý
+     *            ï¿½ï¿½Ê¼Î»ï¿½ï¿½
+     * @return intï¿½ï¿½ï¿½ï¿½
      */
     public static int byte4ToInt(byte[] bytes, int off) {
         int b0 = bytes[off] & 0xFF;
@@ -118,13 +118,15 @@ public class demo1 {
         int x = -32769 ;
         DataOutputStream dos = new DataOutputStream(new FileOutputStream("dos.txt"));
         dos.writeInt(x);
+        byte h = (byte) ((x>>>8) & 0xFF);
+        System.out.println(Byte.toString(h));
         byte[] b = intToByte4(x);
         System.out.println(b[0]);
         System.out.println(Integer.toBinaryString(x));
-        DataInputStream dis = new DataInputStream(new FileInputStream("dos.txt"));
-
-        int s = dis.readUnsignedShort();
-        System.out.println(s);
-        System.out.println();
+//        DataInputStream dis = new DataInputStream(new FileInputStream("dos.txt"));
+//
+//        int s = dis.readUnsignedShort();
+//        System.out.println(s);
+//        System.out.println();
     }
 }
