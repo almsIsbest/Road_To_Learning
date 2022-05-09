@@ -20,7 +20,7 @@ import io.netty.handler.logging.LoggingHandler;
  * @Author alms
  * @Data 2022/4/29 15:08
  **/
-public abstract class TcpServer <D extends ByteToMessageDecoder,H extends ChannelInboundHandlerAdapter> {
+public abstract  class TcpServer <D extends ByteToMessageDecoder,H extends ChannelInboundHandlerAdapter> {
     private EventLoopGroup bossGroup = null;
     private EventLoopGroup workerGroup = null;
 
