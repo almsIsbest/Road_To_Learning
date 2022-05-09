@@ -23,4 +23,8 @@ public class GameServer extends TcpServer<GamePacketDecoder,GameServerHandler> {
     public GameServerHandler createHandler() {
         return new GameServerHandler();
     }
+
+    public static boolean start(){
+        return gameServer.start(null,8088,false);
+    }
 }

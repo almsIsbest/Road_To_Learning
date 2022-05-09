@@ -1,6 +1,7 @@
 package com.thor.game.io.server;
 
 import com.thor.io.AbstractPacketDecoder;
+import io.netty.channel.Channel;
 import io.netty.handler.codec.ByteToMessageDecoder;
 
 /**
@@ -11,4 +12,13 @@ import io.netty.handler.codec.ByteToMessageDecoder;
  **/
 public class GamePacketDecoder extends AbstractPacketDecoder {
 
+    @Override
+    public void invalidPacketSize(Channel channel) {
+
+    }
+
+    @Override
+    public int maxPacketSize(int packetId) {
+        return 0;
+    }
 }

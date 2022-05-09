@@ -9,4 +9,7 @@ package com.thor.utils;
 public class CommConStance {
     /**包头长度*/
     public static final int PACKET_HEADER_LENGTH = 6;
+
+    /**协议号长度*/
+    public static final int PACKET_ID_LENGTH = 2;
 }

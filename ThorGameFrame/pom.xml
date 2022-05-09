@@ -14,6 +14,7 @@
         <module>thor_service</module>
         <module>thor_common</module>
         <module>thor_game</module>
+        <module>thor_test</module>
     </modules>
 
     <properties>
