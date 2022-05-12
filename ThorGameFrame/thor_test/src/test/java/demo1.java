@@ -15,36 +15,36 @@ import java.util.Arrays;
 public class demo1 {
 
     private static final int writeInt = 345;
-    /**��С�˲���**/
+    /**??��?????**/
     @Test
     public void test1(){
         ByteBuf buf = Unpooled.buffer(4,4);
         buf.writeInt(345);
         byte[] arr = new byte[4];
         buf.readBytes(arr);
-        /**��˻���С�˶�**/
+        /**??????��???**/
         System.out.println(Arrays.toString(arr));
         byte a = (byte) 0x345;
         System.out.println(Integer.toHexString(-1));
-        System.out.println("int ת�� byte");
+        System.out.println("int ??? byte");
         byte[] b =intToByte4(writeInt);
         for(int i = 0 ;i<b.length;i++){
             System.out.println(b[i]);
         }
-        System.out.println("long ת�� byte");
+        System.out.println("long ??? byte");
         b=longToByte8(345);
         for(int i = 0 ;i<b.length;i++){
             System.out.println(b[i]);
         }
 
 
-        System.out.println("unsigned short ת�� byte");
+        System.out.println("unsigned short ??? byte");
         b = unsignedShortToByte2(345);
         for(int i = 0 ;i<b.length;i++){
             System.out.println(b[i]);
         }
     }
-    /** int����ת����4�ֽڵ�byte����**/
+    /** int?????????4????byte????**/
     public static byte[] intToByte4(int i) {
         byte[] targets = new byte[4];
         targets[3] = (byte) (i & 0xFF);
@@ -54,7 +54,7 @@ public class demo1 {
         return targets;
     }
 
-    /**long����ת����8�ֽڵ�byte����**/
+    /**long?????????8????byte????**/
     public static byte[] longToByte8(long lo){
         byte[] target = new byte[8];
         for(int i=0;i<8 ;i++){
@@ -71,24 +71,24 @@ public class demo1 {
         return target;
     }
     /**
-     * byte����ת��Ϊ�޷���short����
+     * byte?????????????short????
      *
      * @param bytes
-     *            byte����
-     * @return short����
+     *            byte????
+     * @return short????
      */
     public static int byte2ToUnsignedShort(byte[] bytes){
         return byte2ToUnsignedShort(bytes, 0);
     }
 
     /**
-     * byte����ת��Ϊ�޷���short����
+     * byte?????????????short????
      *
      * @param bytes
-     *            byte����
+     *            byte????
      * @param off
-     *            ��ʼλ��
-     * @return short����
+     *            ???��??
+     * @return short????
      */
     public static int byte2ToUnsignedShort(byte[] bytes, int off) {
         int high = bytes[off];
@@ -97,13 +97,13 @@ public class demo1 {
     }
 
     /**
-     * byte����ת��Ϊint����
+     * byte????????int????
      *
      * @param bytes
-     *            byte����
+     *            byte????
      * @param off
-     *            ��ʼλ��
-     * @return int����
+     *            ???��??
+     * @return int????
      */
     public static int byte4ToInt(byte[] bytes, int off) {
         int b0 = bytes[off] & 0xFF;
