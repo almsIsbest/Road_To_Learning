@@ -1,0 +1,7 @@
+package com.xiaocui.xiaocui_server.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.xiaocui.xiaocui_server.model.entity.BmsBillboard;
+
+public interface BmsBillboardService extends IService<BmsBillboard> {
+}
