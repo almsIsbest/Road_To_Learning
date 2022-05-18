@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @ClassName BmsPromotionMapper
- * @Description
+ * @Description  推广链接
  * @Author alms
  * @Data 2022/5/17 16:07
  **/
