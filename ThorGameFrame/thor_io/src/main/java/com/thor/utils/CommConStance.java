@@ -12,4 +12,7 @@ public class CommConStance {
 
     /**协议号长度*/
     public static final int PACKET_ID_LENGTH = 2;
+
+    /**每个包的最大长度*/
+    public static final int Normal_MAX_PACKET_SIZE = (int)Short.MAX_VALUE * 2 - 100;
 }

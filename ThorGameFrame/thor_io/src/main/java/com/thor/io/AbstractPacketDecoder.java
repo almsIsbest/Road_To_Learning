@@ -1,11 +1,13 @@
 package com.thor.io;
 
+import com.thor.io.packet.ReadPacket;
 import com.thor.utils.CommConStance;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ import java.util.List;
  * @Author alms
  * @Data 2022/4/29 17:08
  **/
+@Slf4j
 public abstract class AbstractPacketDecoder extends ByteToMessageDecoder {
 
     /**
@@ -26,6 +29,7 @@ public abstract class AbstractPacketDecoder extends ByteToMessageDecoder {
      **/
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+        log.info("decoding");
         if(in.readableBytes() < CommConStance.PACKET_HEADER_LENGTH){
             return;
         }
@@ -51,6 +55,15 @@ public abstract class AbstractPacketDecoder extends ByteToMessageDecoder {
         }
 
         ByteBuf readBuf = PooledByteBufAllocator.DEFAULT.buffer(dataLength-2);
+        in.readBytes(readBuf);
+
+        ReadPacket mp = createPacket(packetId,readBuf);
+        if(mp != null){
+            out.add(mp);
+        }else {
+            readBuf.release();
+            notExistPacket(ctx.channel(), packetId);
+        }
     }
 
     /**
@@ -68,4 +81,20 @@ public abstract class AbstractPacketDecoder extends ByteToMessageDecoder {
      * @return 最大包体长度
      */
     public abstract int maxPacketSize(int packetId);
+
+    /**
+     * 生成项目需要的包,每个项目可能不同,但是都继承于{@link ReadPacket}
+     * @param id 协议id
+     * @param readBuf 包体
+     * @return 具体协议
+     */
+    public abstract ReadPacket createPacket(int id, ByteBuf readBuf);
+
+
+    /**
+     * 处理未定义的包
+     * @param channel channel
+     * @param id 协议id
+     */
+    public abstract void notExistPacket(Channel channel, int id);
 }
