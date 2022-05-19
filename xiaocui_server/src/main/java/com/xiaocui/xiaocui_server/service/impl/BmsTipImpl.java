@@ -18,7 +18,7 @@ public class BmsTipImpl extends ServiceImpl<BmsTipMapper, BmsTip> implements Bms
         try {
             todayTip = this.baseMapper.getRandomTip();
         } catch (Exception e) {
-            log.info("tip转化失败");
+            log.info("tip转化失败 {} ",e);
         }
         return todayTip;
     }

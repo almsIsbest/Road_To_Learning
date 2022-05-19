@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/tip")
@@ -19,7 +20,7 @@ public class BmsTipController extends BaseController {
 
     @GetMapping("/today")
     public ApiResult<BmsTip> getRandomTip() {
-        BmsTip randomTip = bmsTipService.getRandomTip();
-        return ApiResult.success(randomTip);
+        List<BmsTip> randomTip = bmsTipService.list();
+        return ApiResult.success(randomTip.get(0));
     }
 }
