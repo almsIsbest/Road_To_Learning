@@ -12,10 +12,10 @@ import java.util.concurrent.Executors;
 public class Producer {
     public static void main(String[] args) throws MQClientException, InterruptedException {
         DefaultMQProducer defaultMQProducer = new DefaultMQProducer("ProducerGroup");
-        defaultMQProducer.setNamesrvAddr("101.42.134.97:9876");
+        defaultMQProducer.setNamesrvAddr("192.168.181.133:9876");
 //        defaultMQProducer.setSendMsgTimeout(6000);
         defaultMQProducer.start();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             try {
                 Message message = new Message("Topic","Tag",("Hello RocketMq"+i).getBytes(StandardCharsets.UTF_8));
                 SendResult sendResult = defaultMQProducer.send(message);
@@ -27,9 +27,7 @@ public class Producer {
         }
         defaultMQProducer.shutdown();
 
-
-
-
+        
 
     }
 }
