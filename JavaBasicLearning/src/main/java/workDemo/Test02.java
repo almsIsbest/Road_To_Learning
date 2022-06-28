@@ -87,4 +87,30 @@ public class Test02 {
         HashMap<Integer, Integer> map = new HashMap<>();
         map.put(1,1);
     }
+
+
+    @Test
+    public void test2() {
+        List<Order> utilList = new ArrayList<>();  //备用List
+        for (int i = 10; i < 13; i++) {
+            Order order = new Order();
+            order.setId(i);  //id值为10,11,12
+            utilList.add(order);
+        }
+
+        List<Order> list = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            Order order = new Order();
+            order.setId(i);  //id值为0,1,2
+            list.add(order);
+            order = utilList.get(i);  //添加到list后，修改引用，指向备用List的元素
+            System.out.println("order"+order.getId());
+            System.out.println("list "+i+":"+list.get(i).getId());
+        }
+        for (int i = 0; i < list.size(); i++) {
+            Order order = list.get(i);
+            System.out.println(i + ":" + order.getId());
+        }
+    }
+
 }

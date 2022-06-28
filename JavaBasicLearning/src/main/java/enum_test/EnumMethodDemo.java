@@ -20,7 +20,7 @@ public class EnumMethodDemo  {
             System.out.println(s + " ordinal: " + s.ordinal());
         }
         Color green = Color.Green;
-        System.out.println("green name(): " + green.name());
+        System.out.println("green name(): " + green.toString());
         System.out.println("green getDeclaringClass(): " + green.getDeclaringClass());
         System.out.println("green hashCode(): " + green.hashCode());
         System.out.println("green compareTo Color.GREEN: " + green.compareTo(Color.Green));

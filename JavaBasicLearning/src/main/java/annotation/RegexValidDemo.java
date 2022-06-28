@@ -12,8 +12,6 @@ public class RegexValidDemo {
         @RegexValid(policy = RegexValid.Policy.DATE)
         private String date;
         @RegexValid(policy = RegexValid.Policy.MAIL)
-
-
         private String mail;
         @RegexValid("^((\\+)?86\\s*)?((13[0-9])|(15([0-3]|[5-9]))|(18[0,2,5-9]))\\d{8}$")
         private String phone;
