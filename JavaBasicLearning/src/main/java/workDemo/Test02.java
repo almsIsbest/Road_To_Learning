@@ -1,8 +1,13 @@
 package workDemo;
 
+import com.sun.jdi.ArrayReference;
 import org.junit.Test;
+import schedule.Scheduledemo;
 
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @ClassName Test02
@@ -91,19 +96,19 @@ public class Test02 {
 
     @Test
     public void test2() {
-        List<Order> utilList = new ArrayList<>();  //å¤‡ç”¨List
+        List<Order> utilList = new ArrayList<>();  //±¸ÓÃList
         for (int i = 10; i < 13; i++) {
             Order order = new Order();
-            order.setId(i);  //idå€¼ä¸º10,11,12
+            order.setId(i);  //idÖµÎª10,11,12
             utilList.add(order);
         }
 
         List<Order> list = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             Order order = new Order();
-            order.setId(i);  //idå€¼ä¸º0,1,2
+            order.setId(i);  //idÖµÎª0,1,2
             list.add(order);
-            order = utilList.get(i);  //æ·»åŠ åˆ°liståŽï¼Œä¿®æ”¹å¼•ç”¨ï¼ŒæŒ‡å‘å¤‡ç”¨Listçš„å…ƒç´ 
+            order = utilList.get(i);  //Ìí¼Óµ½listºó£¬ÐÞ¸ÄÒýÓÃ£¬Ö¸Ïò±¸ÓÃListµÄÔªËØ
             System.out.println("order"+order.getId());
             System.out.println("list "+i+":"+list.get(i).getId());
         }
@@ -113,4 +118,99 @@ public class Test02 {
         }
     }
 
+
+    @Test
+    public void test6(){
+//        HashMap<Integer,Integer> map = new HashMap<>();
+//        map.put(1,1);
+//        map.put(2,2);
+//
+//        ArrayList<Integer> list = new ArrayList<>();
+//        list.addAll(map.keySet());
+//        list.forEach(integer -> {
+//            System.out.println(integer);
+//        });
+//        ArrayList<Integer> list2 = new ArrayList<>();
+//        list2.addAll(list);
+//        System.out.println("Çå¿ÕÊý¾Ý");
+//        list2.clear();
+//        list.forEach(integer -> {
+//            System.out.println(integer);
+//        });
+//
+//        System.out.println("Çå¿ÕÍê³É");
+        Map<String, Integer> map = new TreeMap<>();
+        map.put("orange", 1);
+        map.put("apple", 2);
+        map.put("pear", 3);
+        for (String key : map.keySet()) {
+            System.out.println(key);
+        }
+        // apple, orange, pear
+
+        HashMap<Integer,ArrayList<Integer>> map1 =new HashMap<>();
+        map1.put(1,new ArrayList<>(Arrays.asList(1,2,3,4,5,6)));
+        map1.put(2,new ArrayList<>(Arrays.asList(2,3,4,5,6,7)));
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        list.addAll(map1.get(1));
+        list.addAll(map1.get(2));
+
+        list.forEach(k->{
+            System.out.println(k);
+        });
+
+        ArrayList<Integer> list2 = new ArrayList<>(map1.get(1));
+
+    }
+
+    @Test
+    public void test07(){
+        int i = 0;
+        outer:
+        for(;true;){
+            inner:
+            for(;i<10;i++){
+                prt("i = "+i);
+                if(i==2){
+                    prt("continue");
+                    continue ;
+                }
+                if(i == 3){
+                    prt("break");
+                    i++;
+                    break ;
+                }
+                if(i == 7){
+                    prt("continue outer");
+                    i++;
+                    continue outer;
+                }
+
+                if(i == 8){
+                    prt("break outer");
+                    break outer;
+                }
+
+                for(int k = 0;k<5;k++){
+                    if(k == 3){
+                        prt("continue inner");
+                        continue inner;
+                    }
+                }
+            }
+
+        }
+    }
+
+    @Test
+    public void test8(){
+       float w = (float)((32395-32388)/32395)* (float)0.5;
+        System.out.printf("%f",w);
+    }
+
+    public void prt(String s){
+        System.out.println(s);
+    }
 }

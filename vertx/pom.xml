@@ -25,6 +25,11 @@
             <artifactId>vertx-core</artifactId>
             <version>3.9.4</version>
         </dependency>
+        <dependency>
+            <groupId>com.microsoft.azure.cognitiveservices</groupId>
+            <artifactId>azure-cognitiveservices-contentmoderator</artifactId>
+            <version>1.0.2-beta</version>
+        </dependency>
     </dependencies>
 
 

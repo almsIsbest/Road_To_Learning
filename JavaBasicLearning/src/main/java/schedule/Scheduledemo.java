@@ -13,14 +13,23 @@ import java.util.concurrent.TimeUnit;
  **/
 public class Scheduledemo {
     public static void main(String[] args) {
-        ScheduledExecutorService res= Executors.newScheduledThreadPool(1);
+//        ScheduledExecutorService res= Executors.newScheduledThreadPool(1);
+//
+//        Runnable task2=()-> System.out.println("Running task2");
+//
+//        ScheduledFuture<?> result=res.schedule(task2,5, TimeUnit.SECONDS);
+//        if(result!=null&&result.isCancelled()){
+//            System.out.println("已经取消");
+//        }
 
-        Runnable task2=()-> System.out.println("Running task2");
-
-        ScheduledFuture<?> result=res.schedule(task2,5, TimeUnit.SECONDS);
-        if(result!=null&&result.isCancelled()){
-            System.out.println("已经取消");
-        }
+        ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("rrrr");
+                return;
+            }
+        },0,1, TimeUnit.SECONDS);
     }
 
 }
